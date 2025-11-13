@@ -6,7 +6,7 @@ services:
     container_name: mysql_container
     restart: always
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pmy-secret-pw"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -14,9 +14,7 @@ services:
       MYSQL_ROOT_PASSWORD: my-secret-pw
       MYSQL_DATABASE: book_review_db
       MYSQL_USER: pravin
-      MYSQL_PASSWORD: Demo12@Test23
-    ports:
-      - "3306:3306"
+      MYSQL_PASSWORD: Amara2025!
     volumes:
       - mysql_data:/var/lib/mysql
 
@@ -32,10 +30,10 @@ services:
       DB_HOST: mysql
       DB_NAME: book_review_db
       DB_USER: pravin
-      DB_PASS: Demo12@Test23
+      DB_PASS: Amara2025!
       DB_DIALECT: mysql
       JWT_SECRET: mysecretkey
-      ALLOWED_ORIGINS: http://<FRONTEND PUBLIC IP>:3000
+      ALLOWED_ORIGINS: http://20.11.43.110:3000
     ports:
       - "3001:3001"
 
@@ -46,7 +44,7 @@ services:
     depends_on:
       - backend
     environment:
-      NEXT_PUBLIC_API_URL: http://<BACKEND PUBLIC IP>:3001
+      NEXT_PUBLIC_API_URL: http://20.11.43.110:3001
     ports:
       - "3000:3000"
 
